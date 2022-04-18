@@ -18,4 +18,4 @@ centroids = np.array([(1,0,0),(0,1,1)])
 
 min_distance = Distance(vector, centroids)
  
-print(f'Los centroides a los que pertenece cada vector x son:{x.min_distances(centroids)}')
+print(f'Los centroides a los que pertenece cada vector x son:{min_distance.min_distances()}')
