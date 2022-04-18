@@ -4,11 +4,25 @@ class Sorting:
 
     def __init__(self, array):
         self.array = array
+        self.norma_cero = self.norma_cero()
+        self.norma_l2 = self.norma_l2()
+        self.norma_inf = self.norma_inf()
+
+    def norma_cero(self):
+        return np.count_nonzero(self.array != 0, axis=1)
+
+    def norma_l1(self):
+        return np.sum(abs(self.array), axis=1)
+    
+    def norma_l2(self):
+        return (np.sum((abs(self.array))**2, axis=1))**0.5
+
+    def norma_inf(self):
+        return np.max(abs(self.array), axis=1)
 
     def indices(self):
-        norma_l2 = np.sum((abs(self.array))**2, axis=1)**0.5
-        id = np.argsort(norma_l2)[::-1]
-        print("Las normas de las filas son:",norma_l2)
+        id = np.argsort(self.norma_l2)[::-1]
+        print("Las normas de las filas son:",self.norma_l2)
         print("Los indices de las normas ordenados descendente: ",id)
         return self.array[id]
         
